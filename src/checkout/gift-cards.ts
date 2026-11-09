@@ -13,6 +13,9 @@ export function applyGiftCards(due: Cents, cards: GiftCard[]) {
   return { used: used.filter((u) => u.amount > 0), toPay: remaining };
 }
 
+/** At most three gift cards per order, as the payment provider allows. */
+export const MAX_GIFT_CARDS = 3;
+
 export function isValidCode(code: string): boolean {
   return /^LR-GC-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code.trim().toUpperCase());
 }
